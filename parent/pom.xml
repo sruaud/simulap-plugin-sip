@@ -247,8 +247,13 @@
 						<argument>"-Jsimulap.sip.dictionary.path=${main.basedir}/dictionaries"</argument>
 						<argument>-Duser.dir=${main.basedir}/tests</argument>
 						<argument>-t</argument>
-						<argument>${main.basedir}/tests/SIPtestsGlobal.jmx</argument>
+						<argument>${main.basedir}/tests/Streamwide-test.jmx</argument>
 					</arguments>
+					<environmentVariables>
+						<JVM_ARGS>
+							-Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=8000,suspend=n
+						</JVM_ARGS>
+					</environmentVariables>
 				</configuration>
 			</plugin>
 		</plugins>

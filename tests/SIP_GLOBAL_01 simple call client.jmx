@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.1.1 r1855137">
+  <hashTree>
+    <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="SIP_GLOBAL_01 simple call client" enabled="true">
+      <boolProp name="TransactionController.includeTimers">false</boolProp>
+      <boolProp name="TransactionController.parent">true</boolProp>
+    </TransactionController>
+    <hashTree>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <com.hpe.simulap.protocol.sip.sampler.SipSampler guiclass="com.hpe.simulap.protocol.sip.sampler.gui.SipSamplerConfigGui" testclass="com.hpe.simulap.protocol.sip.sampler.SipSampler" testname="Node2 sends Invite" enabled="true">
+        <stringProp name="sip.node.name">sipNode2</stringProp>
+        <stringProp name="sip.message.direction">send</stringProp>
+        <boolProp name="sip.message.reset">true</boolProp>
+        <stringProp name="sip.message.timeout"></stringProp>
+        <boolProp name="sip.message.optional">false</boolProp>
+        <boolProp name="sip.message.ignoreRetransmission">false</boolProp>
+        <stringProp name="sip.message.type">request</stringProp>
+        <stringProp name="sip.message.command">INVITE</stringProp>
+        <stringProp name="sip.message.response.code">200</stringProp>
+        <stringProp name="sip.message.dialnb">Dial2</stringProp>
+        <stringProp name="sip.message.transnb">trans1</stringProp>
+        <stringProp name="sip.message.relatedtransnb">None</stringProp>
+        <stringProp name="sip.header.name.0">Request-URI</stringProp>
+        <stringProp name="sip.header.value.0">sip:${b_username}@${b_ip}:${b_port}</stringProp>
+        <stringProp name="sip.header.name.1">Call-ID</stringProp>
+        <stringProp name="sip.header.value.1">mylovelycallidvalue1</stringProp>
+        <stringProp name="sip.header.name.2">CSeq</stringProp>
+        <stringProp name="sip.header.value.2">1 INVITE</stringProp>
+        <stringProp name="sip.header.name.3">From</stringProp>
+        <stringProp name="sip.header.value.3">&quot;${a_name}&quot; &lt;sip:${a_username}@${a_ip}&gt;</stringProp>
+        <stringProp name="sip.header.name.4">To</stringProp>
+        <stringProp name="sip.header.value.4">&quot;${b_name}&quot; &lt;sip:${b_username}@${b_ip}&gt;</stringProp>
+        <stringProp name="sip.header.name.5">Via</stringProp>
+        <stringProp name="sip.header.value.5">${a_ip}:${a_port}</stringProp>
+        <stringProp name="sip.header.name.6">Max-Forwards</stringProp>
+        <stringProp name="sip.header.value.6">70</stringProp>
+        <stringProp name="sip.header.name.7">Contact</stringProp>
+        <stringProp name="sip.header.value.7">&quot;${a_name}&quot; &lt;sip:${a_username}@${a_ip}:${a_port}&gt;</stringProp>
+        <stringProp name="sip.header.name.8">Content-Type</stringProp>
+        <stringProp name="sip.header.value.8">application/sdp</stringProp>
+        <stringProp name="sip.header.name.9">titi</stringProp>
+        <stringProp name="sip.header.value.9">toto</stringProp>
+        <stringProp name="sip.header.name.10">Call-Info</stringProp>
+        <stringProp name="sip.header.value.10">&lt;http://www.antd.nist.gov&gt;</stringProp>
+        <stringProp name="sip.header.name.11">Supported</stringProp>
+        <stringProp name="sip.header.value.11">100rel</stringProp>
+        <stringProp name="sip.body.text">v=0
+o=4855 13760799956958020 13760799956958020 IN IP4  129.6.55.78
+s=mysession session
+&quot;${a_name}&quot; &lt;sip:${a_username}@${a_ip}:${a_port}&gt;
+</stringProp>
+      </com.hpe.simulap.protocol.sip.sampler.SipSampler>
+      <hashTree/>
+      <com.hpe.simulap.protocol.sip.sampler.SipSampler guiclass="com.hpe.simulap.protocol.sip.sampler.gui.SipSamplerConfigGui" testclass="com.hpe.simulap.protocol.sip.sampler.SipSampler" testname="Node1 receives Invite 1" enabled="true">
+        <stringProp name="sip.node.name">sipNode1</stringProp>
+        <stringProp name="sip.message.direction">receive</stringProp>
+        <boolProp name="sip.message.reset">true</boolProp>
+        <stringProp name="sip.message.timeout"></stringProp>
+        <boolProp name="sip.message.optional">false</boolProp>
+        <boolProp name="sip.message.ignoreRetransmission">false</boolProp>
+        <stringProp name="sip.message.type">request</stringProp>
+        <stringProp name="sip.message.command">INVITE</stringProp>
+        <stringProp name="sip.message.response.code">200</stringProp>
+        <stringProp name="sip.message.dialnb">Dial1</stringProp>
+        <stringProp name="sip.message.transnb">trans1</stringProp>
+        <stringProp name="sip.message.relatedtransnb">None</stringProp>
+        <stringProp name="sip.header.name.0">Request-URI</stringProp>
+        <stringProp name="sip.header.value.0">sip:${b_username}@${b_ip}:${b_port}</stringProp>
+        <stringProp name="sip.header.name.1">Call-ID</stringProp>
+        <stringProp name="sip.header.value.1">mylovelycallidvalue1</stringProp>
+        <stringProp name="sip.header.name.2">CSeq</stringProp>
+        <stringProp name="sip.header.value.2">1 INVITE</stringProp>
+        <stringProp name="sip.header.name.3">From</stringProp>
+        <stringProp name="sip.header.value.3">&quot;${a_name}&quot; &lt;sip:${a_username}@${a_ip}&gt;</stringProp>
+        <stringProp name="sip.header.name.4">To</stringProp>
+        <stringProp name="sip.header.value.4">&quot;${b_name}&quot; &lt;sip:${b_username}@${b_ip}&gt;</stringProp>
+        <stringProp name="sip.header.name.5">Max-Forwards</stringProp>
+        <stringProp name="sip.header.value.5">70</stringProp>
+        <stringProp name="sip.header.name.6">Contact</stringProp>
+        <stringProp name="sip.header.value.6">&quot;${a_name}&quot; &lt;sip:${a_username}@${a_ip}:${a_port}&gt;</stringProp>
+        <stringProp name="sip.header.name.7">Content-Type</stringProp>
+        <stringProp name="sip.header.value.7">application/sdp</stringProp>
+        <stringProp name="sip.header.name.8">titi</stringProp>
+        <stringProp name="sip.header.value.8">toto</stringProp>
+        <stringProp name="sip.header.name.9">Call-Info</stringProp>
+        <stringProp name="sip.header.value.9">&lt;http://www.antd.nist.gov&gt;</stringProp>
+        <stringProp name="sip.header.name.10">Supported</stringProp>
+        <stringProp name="sip.header.value.10">PATTERN:Supported:1..rel</stringProp>
+        <stringProp name="sip.body.text">v=0
+o=4855 13760799956958020 13760799956958020 IN IP4  129.6.55.78
+s=mysession session
+&quot;${a_name}&quot; &lt;sip:${a_username}@${a_ip}:${a_port}&gt;
+</stringProp>
+      </com.hpe.simulap.protocol.sip.sampler.SipSampler>
+      <hashTree/>
+      <com.hpe.simulap.protocol.sip.sampler.SipSampler guiclass="com.hpe.simulap.protocol.sip.sampler.gui.SipSamplerConfigGui" testclass="com.hpe.simulap.protocol.sip.sampler.SipSampler" testname="Node1 receives Invite 2" enabled="false">
+        <stringProp name="sip.node.name">sipNode1</stringProp>
+        <stringProp name="sip.message.direction">receive</stringProp>
+        <boolProp name="sip.message.reset">true</boolProp>
+        <stringProp name="sip.message.timeout"></stringProp>
+        <boolProp name="sip.message.optional">false</boolProp>
+        <boolProp name="sip.message.ignoreRetransmission">false</boolProp>
+        <stringProp name="sip.message.type">request</stringProp>
+        <stringProp name="sip.message.command">INVITE</stringProp>
+        <stringProp name="sip.message.response.code"></stringProp>
+        <stringProp name="sip.message.dialnb">Dial1</stringProp>
+        <stringProp name="sip.message.transnb">trans1</stringProp>
+        <stringProp name="sip.message.relatedtransnb">None</stringProp>
+        <stringProp name="sip.header.name.0">To</stringProp>
+        <stringProp name="sip.header.value.0">&quot;${b_name}&quot; &lt;sip:${b_username}@${b_ip}&gt;</stringProp>
+        <stringProp name="sip.header.name.1">titi</stringProp>
+        <stringProp name="sip.header.value.1">toto</stringProp>
+        <stringProp name="sip.body.text">v=0
+o=4855 13760799956958020 13760799956958020 IN IP4  129.6.55.78
+s=mysession session
+&quot;${a_name}&quot; &lt;sip:${a_username}@${a_ip}:${a_port}&gt;
+</stringProp>
+      </com.hpe.simulap.protocol.sip.sampler.SipSampler>
+      <hashTree>
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
+          <stringProp name="ConstantTimer.delay">1500</stringProp>
+        </ConstantTimer>
+        <hashTree/>
+      </hashTree>
+      <com.hpe.simulap.protocol.sip.sampler.SipSampler guiclass="com.hpe.simulap.protocol.sip.sampler.gui.SipSamplerConfigGui" testclass="com.hpe.simulap.protocol.sip.sampler.SipSampler" testname="Node1 sends 100 Trying" enabled="true">
+        <stringProp name="sip.node.name">sipNode1</stringProp>
+        <stringProp name="sip.message.direction">send</stringProp>
+        <boolProp name="sip.message.reset">false</boolProp>
+        <stringProp name="sip.message.timeout"></stringProp>
+        <boolProp name="sip.message.optional">false</boolProp>
+        <boolProp name="sip.message.ignoreRetransmission">false</boolProp>
+        <stringProp name="sip.message.type">response</stringProp>
+        <stringProp name="sip.message.command">INVITE</stringProp>
+        <stringProp name="sip.message.response.code">100</stringProp>
+        <stringProp name="sip.message.dialnb">Dial1</stringProp>
+        <stringProp name="sip.message.transnb">trans1</stringProp>
+        <stringProp name="sip.message.relatedtransnb">None</stringProp>
+        <stringProp name="sip.header.name.0">tes</stringProp>
+        <stringProp name="sip.header.value.0"></stringProp>
+        <stringProp name="sip.body.text"></stringProp>
+      </com.hpe.simulap.protocol.sip.sampler.SipSampler>
+      <hashTree>
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+          <stringProp name="ConstantTimer.delay">50</stringProp>
+        </ConstantTimer>
+        <hashTree/>
+      </hashTree>
+      <com.hpe.simulap.protocol.sip.sampler.SipSampler guiclass="com.hpe.simulap.protocol.sip.sampler.gui.SipSamplerConfigGui" testclass="com.hpe.simulap.protocol.sip.sampler.SipSampler" testname="Node2 receives 100 Trying" enabled="true">
+        <stringProp name="TestPlan.comments">	</stringProp>
+        <stringProp name="sip.node.name">sipNode2</stringProp>
+        <stringProp name="sip.message.direction">receive</stringProp>
+        <boolProp name="sip.message.reset">false</boolProp>
+        <stringProp name="sip.message.timeout"></stringProp>
+        <boolProp name="sip.message.optional">false</boolProp>
+        <boolProp name="sip.message.ignoreRetransmission">false</boolProp>
+        <stringProp name="sip.message.type">response</stringProp>
+        <stringProp name="sip.message.command">INVITE</stringProp>
+        <stringProp name="sip.message.response.code">100</stringProp>
+        <stringProp name="sip.message.dialnb">Dial2</stringProp>
+        <stringProp name="sip.message.transnb">trans1</stringProp>
+        <stringProp name="sip.message.relatedtransnb">None</stringProp>
+        <stringProp name="sip.header.name.0">Call-ID</stringProp>
+        <stringProp name="sip.header.value.0">mylovelycallidvalue1</stringProp>
+        <stringProp name="sip.header.name.1">CSeq</stringProp>
+        <stringProp name="sip.header.value.1">1 INVITE</stringProp>
+        <stringProp name="sip.header.name.2">From</stringProp>
+        <stringProp name="sip.header.value.2">&quot;${a_name}&quot; &lt;sip:${a_username}@${a_ip}&gt;</stringProp>
+        <stringProp name="sip.header.name.3">To</stringProp>
+        <stringProp name="sip.header.value.3">&quot;${b_name}&quot; &lt;sip:${b_username}@${b_ip}&gt;</stringProp>
+        <stringProp name="sip.header.name.4">Content-Length</stringProp>
+        <stringProp name="sip.header.value.4">0</stringProp>
+        <stringProp name="sip.body.text"></stringProp>
+      </com.hpe.simulap.protocol.sip.sampler.SipSampler>
+      <hashTree/>
+      <com.hpe.simulap.protocol.sip.sampler.SipSampler guiclass="com.hpe.simulap.protocol.sip.sampler.gui.SipSamplerConfigGui" testclass="com.hpe.simulap.protocol.sip.sampler.SipSampler" testname="Node1 sends 180 Ringing" enabled="true">
+        <stringProp name="sip.node.name">sipNode1</stringProp>
+        <stringProp name="sip.message.direction">send</stringProp>
+        <boolProp name="sip.message.reset">false</boolProp>
+        <stringProp name="sip.message.timeout"></stringProp>
+        <boolProp name="sip.message.optional">false</boolProp>
+        <boolProp name="sip.message.ignoreRetransmission">false</boolProp>
+        <stringProp name="sip.message.type">response</stringProp>
+        <stringProp name="sip.message.command">INVITE</stringProp>
+        <stringProp name="sip.message.response.code">180</stringProp>
+        <stringProp name="sip.message.dialnb">Dial1</stringProp>
+        <stringProp name="sip.message.transnb">trans1</stringProp>
+        <stringProp name="sip.message.relatedtransnb">None</stringProp>
+        <stringProp name="sip.body.text"></stringProp>
+      </com.hpe.simulap.protocol.sip.sampler.SipSampler>
+      <hashTree>
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+          <stringProp name="ConstantTimer.delay">100</stringProp>
+        </ConstantTimer>
+        <hashTree/>
+      </hashTree>
+      <com.hpe.simulap.protocol.sip.sampler.SipSampler guiclass="com.hpe.simulap.protocol.sip.sampler.gui.SipSamplerConfigGui" testclass="com.hpe.simulap.protocol.sip.sampler.SipSampler" testname="Node2 receives 180 Ringing" enabled="true">
+        <stringProp name="sip.node.name">sipNode2</stringProp>
+        <stringProp name="sip.message.direction">receive</stringProp>
+        <boolProp name="sip.message.reset">false</boolProp>
+        <stringProp name="sip.message.timeout"></stringProp>
+        <boolProp name="sip.message.optional">false</boolProp>
+        <boolProp name="sip.message.ignoreRetransmission">false</boolProp>
+        <stringProp name="sip.message.type">response</stringProp>
+        <stringProp name="sip.message.command">INVITE</stringProp>
+        <stringProp name="sip.message.response.code">180</stringProp>
+        <stringProp name="sip.message.dialnb">Dial2</stringProp>
+        <stringProp name="sip.message.transnb">trans1</stringProp>
+        <stringProp name="sip.message.relatedtransnb">None</stringProp>
+        <stringProp name="sip.header.name.0">Call-ID</stringProp>
+        <stringProp name="sip.header.value.0">mylovelycallidvalue1</stringProp>
+        <stringProp name="sip.header.name.1">CSeq</stringProp>
+        <stringProp name="sip.header.value.1">1 INVITE</stringProp>
+        <stringProp name="sip.header.name.2">From</stringProp>
+        <stringProp name="sip.header.value.2">&quot;${a_name}&quot; &lt;sip:${a_username}@${a_ip}&gt;</stringProp>
+        <stringProp name="sip.header.name.3">To</stringProp>
+        <stringProp name="sip.header.value.3">&quot;${b_name}&quot; &lt;sip:${b_username}@${b_ip}&gt;</stringProp>
+        <stringProp name="sip.header.name.4">Content-Length</stringProp>
+        <stringProp name="sip.header.value.4">0</stringProp>
+        <stringProp name="sip.body.text"></stringProp>
+      </com.hpe.simulap.protocol.sip.sampler.SipSampler>
+      <hashTree/>
+      <com.hpe.simulap.protocol.sip.sampler.SipSampler guiclass="com.hpe.simulap.protocol.sip.sampler.gui.SipSamplerConfigGui" testclass="com.hpe.simulap.protocol.sip.sampler.SipSampler" testname="Node1 sends 200 OK" enabled="true">
+        <stringProp name="sip.node.name">sipNode1</stringProp>
+        <stringProp name="sip.message.direction">send</stringProp>
+        <boolProp name="sip.message.reset">false</boolProp>
+        <stringProp name="sip.message.timeout"></stringProp>
+        <boolProp name="sip.message.optional">false</boolProp>
+        <boolProp name="sip.message.ignoreRetransmission">false</boolProp>
+        <stringProp name="sip.message.type">response</stringProp>
+        <stringProp name="sip.message.command">INVITE</stringProp>
+        <stringProp name="sip.message.response.code">200</stringProp>
+        <stringProp name="sip.message.dialnb">Dial1</stringProp>
+        <stringProp name="sip.message.transnb">trans1</stringProp>
+        <stringProp name="sip.message.relatedtransnb">None</stringProp>
+        <stringProp name="sip.header.name.0">Contact</stringProp>
+        <stringProp name="sip.header.value.0">&quot;${b_name}&quot; &lt;sip:${b_username}@${b_ip}:${b_port}&gt;</stringProp>
+        <stringProp name="sip.header.name.1">To</stringProp>
+        <stringProp name="sip.header.value.1">&quot;${b_name}&quot; &lt;sip:${b_username}@${b_ip}&gt;</stringProp>
+        <stringProp name="sip.body.text">test1</stringProp>
+      </com.hpe.simulap.protocol.sip.sampler.SipSampler>
+      <hashTree>
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+          <stringProp name="ConstantTimer.delay">150</stringProp>
+        </ConstantTimer>
+        <hashTree/>
+      </hashTree>
+      <com.hpe.simulap.protocol.sip.sampler.SipSampler guiclass="com.hpe.simulap.protocol.sip.sampler.gui.SipSamplerConfigGui" testclass="com.hpe.simulap.protocol.sip.sampler.SipSampler" testname="Node2 receives 200 OK" enabled="true">
+        <stringProp name="sip.node.name">sipNode2</stringProp>
+        <stringProp name="sip.message.direction">receive</stringProp>
+        <boolProp name="sip.message.reset">false</boolProp>
+        <stringProp name="sip.message.timeout"></stringProp>
+        <boolProp name="sip.message.optional">false</boolProp>
+        <boolProp name="sip.message.ignoreRetransmission">false</boolProp>
+        <stringProp name="sip.message.type">response</stringProp>
+        <stringProp name="sip.message.command">INVITE</stringProp>
+        <stringProp name="sip.message.response.code">200</stringProp>
+        <stringProp name="sip.message.dialnb">Dial2</stringProp>
+        <stringProp name="sip.message.transnb">trans1</stringProp>
+        <stringProp name="sip.message.relatedtransnb">None</stringProp>
+        <stringProp name="sip.header.name.0">Call-ID</stringProp>
+        <stringProp name="sip.header.value.0">mylovelycallidvalue1</stringProp>
+        <stringProp name="sip.header.name.1">CSeq</stringProp>
+        <stringProp name="sip.header.value.1">1 INVITE</stringProp>
+        <stringProp name="sip.header.name.2">From</stringProp>
+        <stringProp name="sip.header.value.2">&quot;${a_name}&quot; &lt;sip:${a_username}@${a_ip}&gt;</stringProp>
+        <stringProp name="sip.header.name.3">To</stringProp>
+        <stringProp name="sip.header.value.3">&quot;${b_name}&quot; &lt;sip:${b_username}@${b_ip}&gt;</stringProp>
+        <stringProp name="sip.header.name.4">Contact</stringProp>
+        <stringProp name="sip.header.value.4">&quot;${b_name}&quot; &lt;sip:${b_username}@${b_ip}:${b_port}&gt;</stringProp>
+        <stringProp name="sip.header.name.5">Content-Length</stringProp>
+        <stringProp name="sip.header.value.5">5</stringProp>
+        <stringProp name="sip.body.text">test1</stringProp>
+      </com.hpe.simulap.protocol.sip.sampler.SipSampler>
+      <hashTree/>
+      <com.hpe.simulap.protocol.sip.sampler.SipSampler guiclass="com.hpe.simulap.protocol.sip.sampler.gui.SipSamplerConfigGui" testclass="com.hpe.simulap.protocol.sip.sampler.SipSampler" testname="Node2 sends Ack" enabled="true">
+        <stringProp name="sip.node.name">sipNode2</stringProp>
+        <stringProp name="sip.message.direction">send</stringProp>
+        <boolProp name="sip.message.reset">false</boolProp>
+        <stringProp name="sip.message.timeout"></stringProp>
+        <boolProp name="sip.message.optional">false</boolProp>
+        <boolProp name="sip.message.ignoreRetransmission">false</boolProp>
+        <stringProp name="sip.message.type">request</stringProp>
+        <stringProp name="sip.message.command">ACK</stringProp>
+        <stringProp name="sip.message.response.code"></stringProp>
+        <stringProp name="sip.message.dialnb">Dial2</stringProp>
+        <stringProp name="sip.message.transnb">trans1</stringProp>
+        <stringProp name="sip.message.relatedtransnb">None</stringProp>
+        <stringProp name="sip.header.name.0">param1</stringProp>
+        <stringProp name="sip.header.value.0">value1</stringProp>
+        <stringProp name="sip.header.name.1">titi</stringProp>
+        <stringProp name="sip.header.value.1">toto</stringProp>
+        <stringProp name="sip.header.name.2">mylovelyheader</stringProp>
+        <stringProp name="sip.header.value.2">mylovelyvalue</stringProp>
+        <stringProp name="sip.body.text"></stringProp>
+      </com.hpe.simulap.protocol.sip.sampler.SipSampler>
+      <hashTree/>
+      <com.hpe.simulap.protocol.sip.sampler.SipSampler guiclass="com.hpe.simulap.protocol.sip.sampler.gui.SipSamplerConfigGui" testclass="com.hpe.simulap.protocol.sip.sampler.SipSampler" testname="Node1 receives Ack" enabled="true">
+        <stringProp name="sip.node.name">sipNode1</stringProp>
+        <stringProp name="sip.message.direction">receive</stringProp>
+        <boolProp name="sip.message.reset">false</boolProp>
+        <stringProp name="sip.message.timeout"></stringProp>
+        <boolProp name="sip.message.optional">false</boolProp>
+        <boolProp name="sip.message.ignoreRetransmission">false</boolProp>
+        <stringProp name="sip.message.type">request</stringProp>
+        <stringProp name="sip.message.command">ACK</stringProp>
+        <stringProp name="sip.message.response.code"></stringProp>
+        <stringProp name="sip.message.dialnb">Dial1</stringProp>
+        <stringProp name="sip.message.transnb">trans1</stringProp>
+        <stringProp name="sip.message.relatedtransnb">None</stringProp>
+        <stringProp name="sip.header.name.0">To</stringProp>
+        <stringProp name="sip.header.value.0">&quot;${b_name}&quot; &lt;sip:${b_username}@${b_ip}&gt;</stringProp>
+        <stringProp name="sip.header.name.1">titi</stringProp>
+        <stringProp name="sip.header.value.1">toto</stringProp>
+        <stringProp name="sip.body.text"></stringProp>
+      </com.hpe.simulap.protocol.sip.sampler.SipSampler>
+      <hashTree/>
+      <com.hpe.simulap.protocol.sip.sampler.SipSampler guiclass="com.hpe.simulap.protocol.sip.sampler.gui.SipSamplerConfigGui" testclass="com.hpe.simulap.protocol.sip.sampler.SipSampler" testname="Node2 sends Bye" enabled="true">
+        <stringProp name="sip.node.name">sipNode2</stringProp>
+        <stringProp name="sip.message.direction">send</stringProp>
+        <boolProp name="sip.message.reset">false</boolProp>
+        <stringProp name="sip.message.timeout"></stringProp>
+        <boolProp name="sip.message.optional">false</boolProp>
+        <boolProp name="sip.message.ignoreRetransmission">false</boolProp>
+        <stringProp name="sip.message.type">request</stringProp>
+        <stringProp name="sip.message.command">BYE</stringProp>
+        <stringProp name="sip.message.response.code">200</stringProp>
+        <stringProp name="sip.message.dialnb">Dial2</stringProp>
+        <stringProp name="sip.message.transnb">trans1</stringProp>
+        <stringProp name="sip.message.relatedtransnb">None</stringProp>
+        <stringProp name="sip.body.text"></stringProp>
+      </com.hpe.simulap.protocol.sip.sampler.SipSampler>
+      <hashTree>
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+          <stringProp name="ConstantTimer.delay">3000</stringProp>
+        </ConstantTimer>
+        <hashTree/>
+      </hashTree>
+      <com.hpe.simulap.protocol.sip.sampler.SipSampler guiclass="com.hpe.simulap.protocol.sip.sampler.gui.SipSamplerConfigGui" testclass="com.hpe.simulap.protocol.sip.sampler.SipSampler" testname="Node1 receives Bye" enabled="true">
+        <stringProp name="sip.node.name">sipNode1</stringProp>
+        <stringProp name="sip.message.direction">receive</stringProp>
+        <boolProp name="sip.message.reset">false</boolProp>
+        <stringProp name="sip.message.timeout"></stringProp>
+        <boolProp name="sip.message.optional">false</boolProp>
+        <boolProp name="sip.message.ignoreRetransmission">false</boolProp>
+        <stringProp name="sip.message.type">request</stringProp>
+        <stringProp name="sip.message.command">BYE</stringProp>
+        <stringProp name="sip.message.response.code"></stringProp>
+        <stringProp name="sip.message.dialnb">Dial1</stringProp>
+        <stringProp name="sip.message.transnb">trans1</stringProp>
+        <stringProp name="sip.message.relatedtransnb">None</stringProp>
+        <stringProp name="sip.header.name.0">To</stringProp>
+        <stringProp name="sip.header.value.0">&quot;${b_name}&quot; &lt;sip:${b_username}@${b_ip}&gt;</stringProp>
+        <stringProp name="sip.body.text"></stringProp>
+      </com.hpe.simulap.protocol.sip.sampler.SipSampler>
+      <hashTree>
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
+          <stringProp name="ConstantTimer.delay">1500</stringProp>
+        </ConstantTimer>
+        <hashTree/>
+      </hashTree>
+      <com.hpe.simulap.protocol.sip.sampler.SipSampler guiclass="com.hpe.simulap.protocol.sip.sampler.gui.SipSamplerConfigGui" testclass="com.hpe.simulap.protocol.sip.sampler.SipSampler" testname="Node1 sends 200 OK" enabled="true">
+        <stringProp name="sip.node.name">sipNode1</stringProp>
+        <stringProp name="sip.message.direction">send</stringProp>
+        <boolProp name="sip.message.reset">false</boolProp>
+        <stringProp name="sip.message.timeout"></stringProp>
+        <boolProp name="sip.message.optional">false</boolProp>
+        <boolProp name="sip.message.ignoreRetransmission">false</boolProp>
+        <stringProp name="sip.message.type">response</stringProp>
+        <stringProp name="sip.message.command">INVITE</stringProp>
+        <stringProp name="sip.message.response.code">200</stringProp>
+        <stringProp name="sip.message.dialnb">Dial1</stringProp>
+        <stringProp name="sip.message.transnb">trans1</stringProp>
+        <stringProp name="sip.message.relatedtransnb">None</stringProp>
+        <stringProp name="sip.body.text"></stringProp>
+      </com.hpe.simulap.protocol.sip.sampler.SipSampler>
+      <hashTree/>
+      <com.hpe.simulap.protocol.sip.sampler.SipSampler guiclass="com.hpe.simulap.protocol.sip.sampler.gui.SipSamplerConfigGui" testclass="com.hpe.simulap.protocol.sip.sampler.SipSampler" testname="Node2 receives 200 OK" enabled="true">
+        <stringProp name="sip.node.name">sipNode2</stringProp>
+        <stringProp name="sip.message.direction">receive</stringProp>
+        <boolProp name="sip.message.reset">false</boolProp>
+        <stringProp name="sip.message.timeout"></stringProp>
+        <boolProp name="sip.message.optional">false</boolProp>
+        <boolProp name="sip.message.ignoreRetransmission">false</boolProp>
+        <stringProp name="sip.message.type">response</stringProp>
+        <stringProp name="sip.message.command">INVITE</stringProp>
+        <stringProp name="sip.message.response.code">200</stringProp>
+        <stringProp name="sip.message.dialnb">Dial2</stringProp>
+        <stringProp name="sip.message.transnb">trans1</stringProp>
+        <stringProp name="sip.message.relatedtransnb">None</stringProp>
+        <stringProp name="sip.header.name.0">Call-ID</stringProp>
+        <stringProp name="sip.header.value.0">mylovelycallidvalue1</stringProp>
+        <stringProp name="sip.header.name.1">CSeq</stringProp>
+        <stringProp name="sip.header.value.1">2 BYE</stringProp>
+        <stringProp name="sip.header.name.2">From</stringProp>
+        <stringProp name="sip.header.value.2">&quot;${a_name}&quot; &lt;sip:${a_username}@${a_ip}&gt;</stringProp>
+        <stringProp name="sip.header.name.3">To</stringProp>
+        <stringProp name="sip.header.value.3">&quot;${b_name}&quot; &lt;sip:${b_username}@${b_ip}&gt;</stringProp>
+        <stringProp name="sip.header.name.4">Content-Length</stringProp>
+        <stringProp name="sip.header.value.4">0</stringProp>
+        <stringProp name="sip.body.text"></stringProp>
+      </com.hpe.simulap.protocol.sip.sampler.SipSampler>
+      <hashTree/>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
